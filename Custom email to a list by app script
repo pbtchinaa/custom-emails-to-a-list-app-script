@@ -1,0 +1,22 @@
+function sendemail() {
+  
+
+var emmail_array = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1fv5dDhhTxPFGe3W8BSqNLVVv6eCLrx6oHW3cmiAUArk/edit#gid=783479587").getRange("A2:A").getValues();
+
+var length = emmail_array.length;
+
+for (i=0;i<=length;i++)
+{
+to = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1fv5dDhhTxPFGe3W8BSqNLVVv6eCLrx6oHW3cmiAUArk/edit#gid=783479587").getSheetByName("Email to Send").getRange("A"+(i+2)).getValue();
+
+subject = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1fv5dDhhTxPFGe3W8BSqNLVVv6eCLrx6oHW3cmiAUArk/edit#gid=783479587").getSheetByName("Email to Send").getRange("B"+(i+2)).getValue();
+
+Email_body = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1fv5dDhhTxPFGe3W8BSqNLVVv6eCLrx6oHW3cmiAUArk/edit#gid=783479587").getSheetByName("Email to Send").getRange("C"+(i+2)).getValue();
+
+
+MailApp.sendEmail(to,subject,Email_body)
+
+}
+
+
+}
